@@ -1,0 +1,17 @@
+version: "3"
+
+services:
+    authserver: 
+      build: ../authServer/
+      command: node server.js
+      ports: 
+        - 1000:1000
+    client:
+      build: ./
+      command: npm start
+      ports:
+        - 3000:3000
+      depends_on:
+        - authserver
+      
+      
