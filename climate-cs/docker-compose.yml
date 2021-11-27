@@ -2,12 +2,12 @@ version: "3"
 
 services:
     authserver: 
-      build: ../authServer/
+      build: ../authServer
       command: node server.js
       ports: 
         - 1000:1000
     client:
-      build: ./
+      build: ""
       command: npm start
       ports:
         - 3000:3000
