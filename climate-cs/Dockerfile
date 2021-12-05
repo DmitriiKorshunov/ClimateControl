@@ -1,15 +1,21 @@
-FROM node:10.19.0
+# pull the base image
+FROM node:16.9.0
 
-#RUN npm install
-#RUN mkdir -p  ./climate-cs
+# set the working direction
+WORKDIR /climate-cs
 
-WORKDIR ./climate-cs
-COPY package.json /climate-cs/package.json
+# add `/app/node_modules/.bin` to $PATH
+ENV PATH /climate-cs/node_modules/.bin:$PATH
+
+# install app dependencies
+COPY package.json ./
+
+COPY package-lock.json ./
+
 RUN npm install
 
-COPY . /climate-cs
-#RUN pip install --no-cache-dir -r requirements.txt
-EXPOSE 3000
+# add app
+COPY . ./
 
-
-CMD ["npm","start"]
+# start app
+CMD ["npm", "start"]
