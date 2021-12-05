@@ -5,7 +5,7 @@ FROM node:10.19.0
 
 WORKDIR ./climate-cs
 COPY package.json /climate-cs/package.json
-RUN npm install --only=prod
+RUN npm install
 
 COPY . /climate-cs
 #RUN pip install --no-cache-dir -r requirements.txt

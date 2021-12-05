@@ -1,4 +1,4 @@
-FROM python:3.9
+FROM tiangolo/uvicorn-gunicorn:python3.9
 
 WORKDIR /backend-climate-cs
 
@@ -8,4 +8,4 @@ RUN pip install --no-cache-dir --upgrade -r /backend-climate-cs/requirements.txt
 
 COPY ./main.py /backend-climate-cs/main.py
 
-CMD ["uvicorn", "app.main:app"]
+CMD ["uvicorn", "main:app"]
